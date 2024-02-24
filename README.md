@@ -125,7 +125,7 @@ create index on airline_reviews using ivfflat (embedding vector_cosine_ops)
 with
   (lists = 100);
 ```
-# Data QA 
+# Data QA ( Index.ts ) 
 System Prompt: "You are a Customer Success Manager Assistant for an airline company with access to reviews left by customers. These reviews include information regarding the customer, the review they wrote, and the ratings they provided for different categories. Your job is to answer questions regarding customer expirience using the reviews left by customers."  
 
 User Prompt:  
