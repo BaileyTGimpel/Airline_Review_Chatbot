@@ -7,7 +7,53 @@ https://www.kaggle.com/datasets/dharun4772/british-airline-review-dataset
 ## Data_Preprocessing.ipynb     
 Handling Missing Values: Filled Nan values with "Unknown" for embedding  
 
-Rating Encodings: Instead of numerical ratings, the numerical values were encoded to words generated from gpt to be embedded, with this prompt: "For each category in airline review data with ratings (-1, 1, 2, 3, 4, 5) provide one to two word labels that are infmorative to the customers expirience"  
+Rating Encodings: Instead of numerical ratings, the numerical values were encoded to words generated from gpt to be embedded, with this prompt: "For each category in airline review data with ratings (-1, 1, 2, 3, 4, 5) provide one to two word labels that are infmorative to the customers expirience"   
+```
+seat_comfort_encoding = {
+    -1: "Unbearable",
+    1: "Uncomfortable",
+    2: "Tolerable",
+    3: "Adequate",
+    4: "Comfortable",
+    5: "Luxurious"
+}
+
+cabin_service_encoding = {
+    -1: "Negligent",
+    1: "Inadequate",
+    2: "Basic",
+    3: "Attentive",
+    4: "Exceptional",
+    5: "Outstanding"
+}
+
+entertainment_encoding = {
+    -1: "Non-Existent",
+    1: "Limitted",
+    2: "Adequate",
+    3: "Good",
+    4: "Excellent",
+    5: "Supberb"
+}
+
+ground_service_encoding ={
+    -1: "Dismissive",
+    1: "Unhelpful",
+    2: "Sufficient",
+    3: "Helpful",
+    4: "Effecient",
+    5: "Exceptional"
+}
+
+value_for_money_encoding = {
+    -1: "Overpriced",
+    1: "Expensive",
+    2: "Fair",
+    3: "Reasonable",
+    4: "Good Value",
+    5: "Excellent Value"
+}
+```
 
 Formatting Date Flown: Converted date from 'YYYY-MM-DD' format to 'DayOfWeek, MonthName Day(th/st/nd/rd), Year' format. This format is better suited for embeddings. 
 
