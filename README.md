@@ -15,13 +15,13 @@ Formatting Data for Embedding: In order to embed multiple columns of data, each 
 
 ## Data_Upload.ipynb     
 PostgresSQL Table Set Up: With the pgvectors capabilities installed a table to store the embeddings were created with this query:  
-''' 
+``` 
 CREATE TABLE airline_reviews (
   id bigserial PRIMARY KEY,
   input_content text,
   embedding vector(1536)
 );  
-''' 
+``` 
 
 input_content contains the combined airline review data as text  
 embedding contains the text-embedding-ada-002 embeddings with 1536 dimensions  
