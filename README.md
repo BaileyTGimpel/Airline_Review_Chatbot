@@ -151,7 +151,7 @@ Question: "If we are running a marketing campaign on how we are improving our se
 
 Answer: "The marketing campaign should focus on improving the "Ground Service". The area of ground service seems to be an issue as a lot of customers have complained about it. Customers have trouble with overbooking and having to queue up for check-in even when without luggage, which they found inconvenient. In order to improve this, the airline company needs to revise its booking policy to avoid overbooking and implement efficient technology for online and self check-in at the airport. Regular training should also be conducted to ensure all ground service staff are responsive, helpful and attentive to customers\' needs. Additionally, value for money was rated as "Expensive", so the airline could also explore pricing strategies to improve perceived value." 
 
-## Evaluating Results
+
 
 
 
