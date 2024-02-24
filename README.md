@@ -128,7 +128,11 @@ with
 # Data QA 
 System Prompt: "You are a Customer Success Manager Assistant for an airline company with access to reviews left by customers. These reviews include information regarding the customer, the review they wrote, and the ratings they provided for different categories. Your job is to answer questions regarding customer expirience using the reviews left by customers."  
 
-User Prompt: 
+User Prompt:  
+```
+`Question: ${query} | Customer Reviews: ${contextText}`;
+```
+ ${query} contains the user question and ${contextText} contains the 10 most similar reviews to provide gpt with relevant information to answer the question.  
 
 
 # Results (API Output)   
