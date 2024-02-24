@@ -91,7 +91,40 @@ CREATE TABLE airline_reviews (
 ``` 
 
 input_content contains the combined airline review data as text  
-embedding contains the text-embedding-ada-002 embeddings with 1536 dimensions  
+embedding contains the text-embedding-ada-002 embeddings with 1536 dimensions    
+
+## Edge Function and Data QA    
+In order to take a query and search the database for relevant information an edge function to match documents with cosine similarity was created via this postgresSQL query, which returns the top 10 most similar documents:   
+```
+create or replace function match_documents (
+  query_embedding vector(1536),
+  match_threshold float,
+  match_count int
+)
+returns table (
+  id bigint,
+  content text,
+  similarity float
+)
+language sql stable
+as $$
+  select
+    airline_reviews.id,
+    airline_reviews.input_content,
+    1 - (airline_reviews.embedding <=> query_embedding) as similarity
+  from airline_reviews
+  where airline_reviews.embedding <=> query_embedding < 1 - match_threshold
+  order by airline_reviews.embedding <=> query_embedding
+  limit match_count;
+$$;
+```
+For this function to work our data needs to be indexed correclty, this postgresSQL query accomplishes this: 
+```
+create index on airline_reviews using ivfflat (embedding vector_cosine_ops)
+with
+  (lists = 100);
+```
+
 
 # Results (API Output)   
 ## Query 1
