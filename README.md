@@ -57,7 +57,28 @@ value_for_money_encoding = {
 
 Formatting Date Flown: Converted date from 'YYYY-MM-DD' format to 'DayOfWeek, MonthName Day(th/st/nd/rd), Year' format. This format is better suited for embeddings. 
 
-Formatting Data for Embedding: In order to embed multiple columns of data, each column was seperated by it's label in capital letters, according to blog posts and openAI this is best practice for embeddings with multiple sections of information.     
+Formatting Data for Embedding: In order to embed multiple columns of data, each column was seperated by it's label in capital letters, according to blog posts and openAI this is best practice for embeddings with multiple sections of information.      
+
+```
+df['embedding_input'] = (
+    "CUSTOMER INFORMATION - " + 
+    "AIRCRAFT: " + df.aircraft.str.strip() +
+    "; TRAVELER TYPE: " + df.traveller_type.str.strip() +
+    "; SEAT TYPE: " + df.seat_type.str.strip() +
+    "; ROUTE: " + df.route.str.strip() +
+    "; DATE FLOWN: " + df.date_flown_formatted.str.strip() +
+    ". REVIEW INFORMATION - " +
+    "REVIEW TITLE: " + df.header.str.strip() +
+    "; REVIEW CONTENT: " + df.content.str.strip() +
+    "; SEAT COMFORT: " + df.seat_comfort.str.strip() +
+    "; CABIN STAFF SERVICE: " + df.cabin_staff_service.str.strip() +
+    "; ENTERTAINMENT: " + df.entertainment.str.strip() +
+    "; GROUND SERVICE: " + df.ground_service.str.strip() +
+    "; VALUE FOR MONEY: " + df.value_for_money.str.strip() +
+    "; RECOMMENDED: " + df.recommended.str.strip()
+)
+```
+
 
 ## Data_Upload.ipynb     
 PostgresSQL Table Set Up: With the pgvectors capabilities installed a table to store the embeddings were created with this query:  
